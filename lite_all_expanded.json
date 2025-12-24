@@ -7987,56 +7987,125 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说生成的迁移缺少 import，搜索 migrations serializer",
-          "tool_calls": [
-            {
-              "name": "find",
-              "arguments": {
-                "pattern": "serializer.py"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "TypeSerializer",
-                "path": "django/db/migrations/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class TypeSerializer",
+            "path": "django/"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 TypeSerializer 类的 serialize 方法",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/db/migrations/serializer.py",
-                "start": 270,
-                "end": 290
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "models\\.Model.*import",
+            "path": "django/"
+          }
         },
         {
-          "turn": 3,
-          "thought": "发现 special_cases 中 models.Model 的 imports 为空列表",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "models.Model",
-                "path": "django/db/migrations/serializer.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "special_cases",
+            "path": "django/db/migrations/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "class.*Serializer.*BaseSerializer",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "find",
+          "arguments": {
+            "pattern": "serializer.py",
+            "path": "django/db/migrations/"
+          }
+        },
+        {
+          "name": "find",
+          "arguments": {
+            "pattern": "writer.py",
+            "path": "django/db/migrations/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "def serialize",
+            "path": "django/db/migrations/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/migrations/serializer.py",
+            "start": 265,
+            "end": 290
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "bases=.*models\\.Model",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "class BaseSerializer",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "models\\.Model.*import",
+            "path": "tests/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "TypeSerializer",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "from django\\.db import models",
+            "path": "django/db/migrations/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/migrations/serializer.py",
+            "start": 1,
+            "end": 50
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "tests/migrations/test_writer.py",
+            "start": 965,
+            "end": 990
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "MigrationWriter",
+            "path": "django/db/migrations/"
+          }
         }
       ],
       "answer": [
         {
           "file": "django/db/migrations/serializer.py",
-          "start_line": 273,
+          "start_line": 276,
           "end_line": 276
         }
       ]
