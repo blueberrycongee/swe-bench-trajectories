@@ -8250,51 +8250,113 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 defer() 在 only() 后不正确，搜索 deferred_loading",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "deferred_loading",
-                "path": "django/db/models/sql/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "def add_deferred_loading",
+            "path": "django/"
+          }
         },
         {
-          "turn": 2,
-          "thought": "找到 query.py，搜索 add_deferred_loading 方法",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "def add_deferred_loading",
-                "path": "django/db/models/sql/query.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "deferred_loading",
+            "path": "django/db/models/"
+          }
         },
         {
-          "turn": 3,
-          "thought": "读取 add_deferred_loading 方法实现",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/db/models/sql/query.py",
-                "start": 2080,
-                "end": 2100
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "def defer",
+            "path": "django/db/models/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "def only",
+            "path": "django/db/models/"
+          }
+        },
+        {
+          "name": "find",
+          "arguments": {
+            "pattern": "query.py",
+            "path": "django/db/models/sql/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "clear_deferred_loading",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/sql/query.py",
+            "start": 2080,
+            "end": 2110
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/query.py",
+            "start": 1895,
+            "end": 1940
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "existing.difference",
+            "path": "django/db/models/sql/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "class Query",
+            "path": "django/db/models/sql/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/sql/query.py",
+            "start": 220,
+            "end": 310
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/sql/query.py",
+            "start": 870,
+            "end": 900
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "get_select_mask",
+            "path": "django/db/models/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "add_immediate_loading",
+            "path": "django/db/models/"
+          }
         }
       ],
       "answer": [
         {
           "file": "django/db/models/sql/query.py",
           "start_line": 2086,
-          "end_line": 2089
+          "end_line": 2097
         }
       ]
     }
