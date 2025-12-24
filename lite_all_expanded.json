@@ -8848,38 +8848,75 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 URLField 抛出 ValueError 而非 ValidationError，搜索 validators",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "class URLValidator",
-                "path": "django/core/validators.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "ModelChoiceIteratorValue",
+            "path": "django/forms/"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 __call__ 方法中的 urlsplit 调用",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/core/validators.py",
-                "start": 105,
-                "end": 145
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class ModelChoiceIteratorValue",
+            "path": "django/forms/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "def __eq__",
+            "path": "django/forms/models.py"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "def __str__",
+            "path": "django/forms/models.py"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "def __hash__",
+            "path": "django/forms/models.py"
+          }
+        },
+        {
+          "name": "find",
+          "arguments": {
+            "pattern": "models.py",
+            "path": "django/forms/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "self.value",
+            "path": "django/forms/models.py"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "self.instance",
+            "path": "django/forms/models.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/forms/models.py",
+            "start": 1415,
+            "end": 1445
+          }
         }
       ],
       "answer": [
         {
-          "file": "django/core/validators.py",
-          "start_line": 108,
-          "end_line": 140
+          "file": "django/forms/models.py",
+          "start_line": 1419,
+          "end_line": 1433
         }
       ]
     }
