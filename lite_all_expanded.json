@@ -9024,38 +9024,40 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 MigrationRecorder 不遵守 db_router，搜索 executor",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "ensure_schema",
-                "path": "django/db/migrations/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class RenameModel",
+            "path": "django/db/migrations/operations/"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 migrate 方法",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/db/migrations/executor.py",
-                "start": 90,
-                "end": 110
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "def database_forwards",
+            "path": "django/db/migrations/operations/models.py"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "alter_db_table",
+            "path": "django/db/migrations/operations/models.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/migrations/operations/models.py",
+            "start": 445,
+            "end": 485
+          }
         }
       ],
       "answer": [
         {
-          "file": "django/db/migrations/executor.py",
-          "start_line": 96,
-          "end_line": 103
+          "file": "django/db/migrations/operations/models.py",
+          "start_line": 447,
+          "end_line": 456
         }
       ]
     }
@@ -9068,38 +9070,33 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 Subquery.as_sql() 生成无效 SQL，搜索 Subquery 类",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "class Subquery",
-                "path": "django/db/models/expressions.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class MultiWidget",
+            "path": "django/forms/widgets.py"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 __init__ 方法",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/db/models/expressions.py",
-                "start": 1145,
-                "end": 1165
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "def id_for_label",
+            "path": "django/forms/widgets.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/forms/widgets.py",
+            "start": 1010,
+            "end": 1030
+          }
         }
       ],
       "answer": [
         {
-          "file": "django/db/models/expressions.py",
-          "start_line": 1149,
-          "end_line": 1155
+          "file": "django/forms/widgets.py",
+          "start_line": 1016,
+          "end_line": 1017
         }
       ]
     }
@@ -9112,38 +9109,40 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 extra_tags 空字符串序列化问题，搜索 MessageEncoder",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "class MessageEncoder",
-                "path": "django/contrib/messages/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class URLValidator",
+            "path": "django/core/validators.py"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 default 方法",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/contrib/messages/storage/cookie.py",
-                "start": 15,
-                "end": 35
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "urlsplit",
+            "path": "django/core/validators.py"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "splitted_url",
+            "path": "django/core/validators.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/core/validators.py",
+            "start": 165,
+            "end": 200
+          }
         }
       ],
       "answer": [
         {
-          "file": "django/contrib/messages/storage/cookie.py",
-          "start_line": 19,
-          "end_line": 22
+          "file": "django/core/validators.py",
+          "start_line": 174,
+          "end_line": 195
         }
       ]
     }
@@ -9156,44 +9155,33 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 dev server 不重启，搜索 autoreload",
-          "tool_calls": [
-            {
-              "name": "find",
-              "arguments": {
-                "pattern": "autoreload.py"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "template_changed",
-                "path": "django/template/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class BooleanField",
+            "path": "django/db/models/fields/__init__.py"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 template_changed 函数",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/template/autoreload.py",
-                "start": 45,
-                "end": 60
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "def select_format",
+            "path": "django/db/models/fields/__init__.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/fields/__init__.py",
+            "start": 1155,
+            "end": 1215
+          }
         }
       ],
       "answer": [
         {
-          "file": "django/template/autoreload.py",
-          "start_line": 48,
-          "end_line": 54
+          "file": "django/db/models/fields/__init__.py",
+          "start_line": 1158,
+          "end_line": 1201
         }
       ]
     }
@@ -9206,38 +9194,33 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 SimpleLazyObject 缺少 __radd__，搜索该类",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "class SimpleLazyObject",
-                "path": "django/utils/functional.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "def migrate",
+            "path": "django/db/migrations/executor.py"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取该类，发现缺少 __radd__ 方法",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/utils/functional.py",
-                "start": 425,
-                "end": 445
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "ensure_schema",
+            "path": "django/db/migrations/executor.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/migrations/executor.py",
+            "start": 93,
+            "end": 125
+          }
         }
       ],
       "answer": [
         {
-          "file": "django/utils/functional.py",
-          "start_line": 432,
-          "end_line": 438
+          "file": "django/db/migrations/executor.py",
+          "start_line": 103,
+          "end_line": 109
         }
       ]
     }
@@ -9250,38 +9233,33 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 If-Modified-Since 空字符串处理问题，搜索相关函数",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "was_modified_since",
-                "path": "django/views/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class Subquery",
+            "path": "django/db/models/expressions.py"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 was_modified_since 函数",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/views/static.py",
-                "start": 125,
-                "end": 145
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "self.query.subquery",
+            "path": "django/db/models/expressions.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/expressions.py",
+            "start": 1775,
+            "end": 1795
+          }
         }
       ],
       "answer": [
         {
-          "file": "django/views/static.py",
-          "start_line": 129,
-          "end_line": 140
+          "file": "django/db/models/expressions.py",
+          "start_line": 1780,
+          "end_line": 1786
         }
       ]
     }
