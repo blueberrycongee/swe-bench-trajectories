@@ -8119,50 +8119,113 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 FormSets 的非表单错误缺少 nonform CSS 类，搜索 formsets.py",
-          "tool_calls": [
-            {
-              "name": "find",
-              "arguments": {
-                "pattern": "formsets.py"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "_non_form_errors",
-                "path": "django/forms/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "_non_form_errors",
+            "path": "django/"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 full_clean 方法中 _non_form_errors 的初始化",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/forms/formsets.py",
-                "start": 330,
-                "end": 390
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class BaseFormSet",
+            "path": "django/"
+          }
         },
         {
-          "turn": 3,
-          "thought": "发现 error_class() 调用没有传入 error_class 参数",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "nonfield",
-                "path": "django/forms/forms.py"
-              }
-            }
-          ]
+          "name": "find",
+          "arguments": {
+            "pattern": "formsets.py",
+            "path": "django/forms/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "error_class=.*nonform",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "def full_clean",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "nonfield",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/forms/formsets.py",
+            "start": 390,
+            "end": 470
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "class ErrorList",
+            "path": "django/forms/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "def non_form_errors",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "errorlist.*nonform",
+            "path": "tests/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "ValidationError",
+            "path": "django/forms/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/forms/formsets.py",
+            "start": 50,
+            "end": 115
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/forms/utils.py",
+            "start": 135,
+            "end": 180
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/forms/formsets.py",
+            "start": 345,
+            "end": 370
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "error_class=.*nonfield",
+            "path": "django/forms/"
+          }
         }
       ],
       "answer": [
@@ -8174,7 +8237,7 @@
         {
           "file": "django/forms/formsets.py",
           "start_line": 380,
-          "end_line": 383
+          "end_line": 386
         }
       ]
     }
