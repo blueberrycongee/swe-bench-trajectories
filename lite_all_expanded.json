@@ -9311,73 +9311,33 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "搜索 watch_for_template_changes, template_changed, dispatch_uid 相关代码",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "watch_for_template_changes",
-                "path": "django/template/"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "template_changed",
-                "path": "django/template/"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "dispatch_uid",
-                "path": "django/template/"
-              }
-            },
-            {
-              "name": "find",
-              "arguments": {
-                "pattern": "**/autoreload.py"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "def |class ",
-                "path": "django/template/autoreload.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "def template_changed",
+            "path": "django/template/autoreload.py"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 autoreload.py 的相关代码",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/template/autoreload.py",
-                "start": 28,
-                "end": 85
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "def watch_for_template_changes",
-                "path": "django/template/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "file_path.suffix",
+            "path": "django/template/autoreload.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/template/autoreload.py",
+            "start": 50,
+            "end": 62
+          }
         }
       ],
       "answer": [
         {
           "file": "django/template/autoreload.py",
-          "start_line": 48,
-          "end_line": 55,
-          "reason": "修改位置: +    if file_path.suffix "
+          "start_line": 55,
+          "end_line": 61
         }
       ]
     }
