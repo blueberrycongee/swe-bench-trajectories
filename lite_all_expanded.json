@@ -9272,101 +9272,33 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "搜索 default, is_safedata, message 相关代码",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "default",
-                "path": "django/contrib/messages/storage/"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "is_safedata",
-                "path": "django/contrib/messages/storage/"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "message",
-                "path": "django/contrib/messages/storage/"
-              }
-            },
-            {
-              "name": "find",
-              "arguments": {
-                "pattern": "**/cookie.py"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "def |class ",
-                "path": "django/contrib/messages/storage/cookie.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class MessageEncoder",
+            "path": "django/contrib/messages/storage/cookie.py"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 cookie.py 的相关代码",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/contrib/messages/storage/cookie.py",
-                "start": 1,
-                "end": 55
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "def default",
-                "path": "django/contrib/messages/storage/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "extra_tags",
+            "path": "django/contrib/messages/storage/cookie.py"
+          }
         },
         {
-          "turn": 3,
-          "thought": "分析 cookie.py 的导入和测试",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/contrib/messages/storage/cookie.py",
-                "start": 1,
-                "end": 50
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "test.*default",
-                "path": "django/contrib/messages/storage/"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "is_safedata",
-                "path": "django/contrib/messages/storage/"
-              }
-            }
-          ]
+          "name": "read",
+          "arguments": {
+            "file": "django/contrib/messages/storage/cookie.py",
+            "start": 10,
+            "end": 35
+          }
         }
       ],
       "answer": [
         {
           "file": "django/contrib/messages/storage/cookie.py",
-          "start_line": 19,
-          "end_line": 25,
-          "reason": "patch 修改位置"
+          "start_line": 18,
+          "end_line": 26
         }
       ]
     }
