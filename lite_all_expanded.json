@@ -9389,101 +9389,33 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "搜索 was_modified_since, header, mtime 相关代码",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "was_modified_since",
-                "path": "django/views/"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "header",
-                "path": "django/views/"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "mtime",
-                "path": "django/views/"
-              }
-            },
-            {
-              "name": "find",
-              "arguments": {
-                "pattern": "**/static.py"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "def |class ",
-                "path": "django/views/static.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "def was_modified_since",
+            "path": "django/views/static.py"
+          }
         },
         {
-          "turn": 2,
-          "thought": "读取 static.py 的相关代码",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/views/static.py",
-                "start": 109,
-                "end": 172
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "def was_modified_since",
-                "path": "django/views/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "If-Modified-Since",
+            "path": "django/views/static.py"
+          }
         },
         {
-          "turn": 3,
-          "thought": "分析 static.py 的导入和测试",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/views/static.py",
-                "start": 1,
-                "end": 50
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "test.*was_modified_since",
-                "path": "django/views/"
-              }
-            },
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "header",
-                "path": "django/views/"
-              }
-            }
-          ]
+          "name": "read",
+          "arguments": {
+            "file": "django/views/static.py",
+            "start": 100,
+            "end": 125
+          }
         }
       ],
       "answer": [
         {
           "file": "django/views/static.py",
-          "start_line": 129,
-          "end_line": 142,
-          "reason": "修改位置: +  "
+          "start_line": 103,
+          "end_line": 122
         }
       ]
     }
