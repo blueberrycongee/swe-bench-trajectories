@@ -8369,51 +8369,98 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说 ManyToManyRel 的 through_fields 不可哈希，搜索该类",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "class ManyToManyRel",
-                "path": "django/db/models/fields/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "class ManyToManyRel",
+            "path": "django/"
+          }
         },
         {
-          "turn": 2,
-          "thought": "找到 reverse_related.py，搜索 identity 属性",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "def identity",
-                "path": "django/db/models/fields/reverse_related.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "through_fields",
+            "path": "django/db/models/"
+          }
         },
         {
-          "turn": 3,
-          "thought": "读取 identity 属性实现，发现 through_fields 缺少 make_hashable",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/db/models/fields/reverse_related.py",
-                "start": 305,
-                "end": 320
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "make_hashable",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "def identity",
+            "path": "django/db/models/"
+          }
+        },
+        {
+          "name": "find",
+          "arguments": {
+            "pattern": "reverse_related.py",
+            "path": "django/db/models/fields/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "ForeignObjectRel",
+            "path": "django/db/models/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/fields/reverse_related.py",
+            "start": 305,
+            "end": 325
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/fields/reverse_related.py",
+            "start": 130,
+            "end": 160
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "db_constraint",
+            "path": "django/db/models/fields/reverse_related.py"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/utils/hashable.py",
+            "start": 1,
+            "end": 25
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "super.identity",
+            "path": "django/db/models/fields/reverse_related.py"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "limit_choices_to",
+            "path": "django/db/models/fields/reverse_related.py"
+          }
         }
       ],
       "answer": [
         {
           "file": "django/db/models/fields/reverse_related.py",
           "start_line": 310,
-          "end_line": 314
+          "end_line": 316
         }
       ]
     }
