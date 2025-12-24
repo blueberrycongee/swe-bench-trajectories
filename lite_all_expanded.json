@@ -8473,44 +8473,92 @@
     "ground_truth": {
       "trajectory": [
         {
-          "turn": 1,
-          "thought": "Issue 说对称 M2M 设置 related_name 无效但没警告，搜索 ManyToManyField",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "class ManyToManyField",
-                "path": "django/db/models/fields/"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "_check_ignored_options",
+            "path": "django/db/models/"
+          }
         },
         {
-          "turn": 2,
-          "thought": "找到 related.py，搜索 _check_ignored_options 方法",
-          "tool_calls": [
-            {
-              "name": "grep",
-              "arguments": {
-                "pattern": "_check_ignored_options",
-                "path": "django/db/models/fields/related.py"
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "symmetrical.*related_name",
+            "path": "django/"
+          }
         },
         {
-          "turn": 3,
-          "thought": "读取该方法，发现缺少对 symmetrical + related_name 的检查",
-          "tool_calls": [
-            {
-              "name": "read",
-              "arguments": {
-                "file": "django/db/models/fields/related.py",
-                "start": 1250,
-                "end": 1280
-              }
-            }
-          ]
+          "name": "grep",
+          "arguments": {
+            "pattern": "fields.W345",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "class ManyToManyField",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "remote_field.symmetrical",
+            "path": "django/"
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "_related_name",
+            "path": "django/db/models/fields/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/fields/related.py",
+            "start": 1250,
+            "end": 1280
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/fields/related.py",
+            "start": 1450,
+            "end": 1480
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "test.*useless_related_name",
+            "path": "tests/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "tests/invalid_models_tests/test_relative_fields.py",
+            "start": 135,
+            "end": 160
+          }
+        },
+        {
+          "name": "grep",
+          "arguments": {
+            "pattern": "checks.Warning",
+            "path": "django/db/models/fields/"
+          }
+        },
+        {
+          "name": "read",
+          "arguments": {
+            "file": "django/db/models/fields/related.py",
+            "start": 105,
+            "end": 130
+          }
         }
       ],
       "answer": [
